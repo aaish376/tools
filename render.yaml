@@ -3,7 +3,7 @@ services:
     name: flask-bg-remover
     runtime: python
     buildCommand: ""
-    startCommand: "gunicorn app:app"
+    startCommand: "gunicorn wsgi:app"
     envVars:
       - key: WEB_CONCURRENCY
         value: "1"
