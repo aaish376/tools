@@ -5,6 +5,7 @@ main = Blueprint('main', __name__)
 
 @main.route('/remove-bg', methods=['POST'])
 def remove_bg():
+    print("\n\ncall from frontend\n\n")
     if 'image' not in request.files:
         return {'error': 'No file uploaded'}, 400
 
