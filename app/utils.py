@@ -9,5 +9,5 @@ def remove_background(input_bytes):
     
     print("\n\nafter env and calling remove fn\n\n")
     # Remove background using the locally stored u2net.onnx
-    result =  remove(input_bytes)
+        
     return io.BytesIO(result)
