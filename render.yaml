@@ -2,14 +2,12 @@ services:
   - type: web
     name: flask-bg-remover
     runtime: python
-    buildCommand: ""
-    startCommand: >
-      bash -c "mkdir -p ~/.u2net && 
-      wget -q https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net.onnx -O ~/.u2net/u2net.onnx &&
-      gunicorn wsgi:app"
+    buildCommand: |
+      mkdir -p /opt/render/project/.cache/u2net
+      wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net.onnx -O /opt/render/project/.cache/u2net/u2net.onnx
+    startCommand: "gunicorn wsgi:app"
     envVars:
+      - key: REMBG_SESSION_CACHE_HOME
+        value: /opt/render/project/.cache
       - key: WEB_CONCURRENCY
         value: "1"
-      - key: REMBG_SESSION_CACHE_HOME
-        value: "/opt/render/project/.cache"
-    plan: free
