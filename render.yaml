@@ -3,6 +3,7 @@ services:
     name: flask-bg-remover
     runtime: python
     buildCommand: |
+      echo "in render.yaml - downloading u2net"
       mkdir -p /opt/render/project/.cache/u2net
       wget https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net.onnx -O /opt/render/project/.cache/u2net/u2net.onnx
     startCommand: "gunicorn wsgi:app"

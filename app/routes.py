@@ -11,7 +11,8 @@ def remove_bg():
 
     image_file = request.files['image']
     output_bytes = remove_background(image_file.read())
-
+    
+    print("\n\nreturning to frontend\n\n")
     return send_file(
         output_bytes,
         mimetype='image/png',
